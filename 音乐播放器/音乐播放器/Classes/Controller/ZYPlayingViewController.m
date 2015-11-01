@@ -23,6 +23,9 @@
 {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     
+    //当点击歌曲后,  歌曲栏tableView变成不能点击状态
+    window.userInteractionEnabled = NO;
+    
     self.view.frame = window.bounds;
     
     [window addSubview:self.view];
@@ -30,10 +33,12 @@
     self.view.y = self.view.height;
     
     //动画
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:3.0 animations:^{
         self.view.y = 0;
+    } completion:^(BOOL finished) {// 播放歌曲的view 完全展示后 设置可以点击
+        window.userInteractionEnabled = YES;
     }];
-  
-}
+    
+   }
 
 @end
