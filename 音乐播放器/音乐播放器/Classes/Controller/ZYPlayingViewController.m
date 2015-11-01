@@ -33,12 +33,29 @@
     self.view.y = self.view.height;
     
     //动画
-    [UIView animateWithDuration:3.0 animations:^{
+    [UIView animateWithDuration:1.0 animations:^{
         self.view.y = 0;
     } completion:^(BOOL finished) {// 播放歌曲的view 完全展示后 设置可以点击
         window.userInteractionEnabled = YES;
     }];
     
-   }
+}
+
+- (IBAction)exit:(id)sender {
+    
+    //让self.view.yu复位
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    
+    window.userInteractionEnabled = NO;
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        self.view.y = self.view.height;
+    } completion:^(BOOL finished) {
+        window.userInteractionEnabled = YES;
+    }];
+    
+    
+}
+
 
 @end
